@@ -1,0 +1,1 @@
+Do not delete a customer record if a vehicle is associated with it
