@@ -1,8 +1,0 @@
-layouts->side_nav
-route.php
-add quote table migration
-add StoreQuoteRequest & UpdateQuoteRequest
-add Quote, Vehicle, Description Model
-add QuoteController
-update AjaxController
-Add Quotes, Jobs(create, edit) view

@@ -27,7 +27,7 @@
                                 </li>
                                 @endif
                                 @php
-                                    $dev = 0;
+                                    $dev = 1;
                                 @endphp
                                 @if($dev)
                                 <!-- Nav item -->

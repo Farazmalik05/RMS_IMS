@@ -17,7 +17,6 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.4/simplebar.min.css" rel="stylesheet">
 
 
-
         <!-- Theme CSS -->
         <link rel="stylesheet" href="{{ asset('css/theme.min.css') }}">
 

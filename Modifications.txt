@@ -1,1 +1,0 @@
-Customer-> Add Customer-> Save Customer-> Save the customer and redirect to Add Vehicle and autopopulate Customer Name and Phone #
