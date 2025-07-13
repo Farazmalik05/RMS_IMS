@@ -38,6 +38,7 @@ class StoreQuoteRequest extends FormRequest
             'nextservicedate'   => ['bail'],
             'job.*'             => ['bail', 'required'],
             'job_id.*'          => ['bail'],
+            'jobtype.*'         => ['required'],
             'quantity.*'        => ['bail', 'required'],
             'total.*'           => ['bail', 'required'],
             'price.*'           => ['bail', 'required'],

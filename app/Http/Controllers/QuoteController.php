@@ -7,6 +7,7 @@ use App\Http\Requests\StoreQuoteRequest;
 use App\Http\Requests\UpdateQuoteRequest;
 use App\Models\Quote;
 use Carbon\Carbon;
+use DB;
 
 class QuoteController extends Controller
 {
@@ -75,11 +76,12 @@ class QuoteController extends Controller
      */
     public function store(StoreQuoteRequest $request)
     {
+        // dump($request->toArray());
         $quote = $request->validated();
         $quote['quote_date'] = Carbon::createFromFormat('d-m-Y', $quote['quote_date'])->format('Y-m-d');
         $quote['quote_duedate'] = Carbon::createFromFormat('d-m-Y', $quote['quote_duedate'])->format('Y-m-d');
         $quote['nextservicedate'] = Carbon::createFromFormat('d-m-Y', $quote['nextservicedate'])->format('Y-m-d');
-        //dump($quote);
+        
         if($quote['quoteyear'] != date('Y', strtotime($quote['quote_date'])))
         {
             //return redirect()->route('quotes.create')->with('error', 'Quote year and quote date do not match');
@@ -87,13 +89,18 @@ class QuoteController extends Controller
         }
 
         //Check if this quote number is already saved
-        $exist = Quote::where([
+        $startOfYear = date('Y-m-d', strtotime('first day of january this year'));
+        $endOfYear   = date('Y-m-d', strtotime('last day of december this year'));
+        
+        $exist = Quote::whereBetween(DB::raw('DATE(quote_date)'), [$startOfYear, $endOfYear])->where(
+        [
             ['type', '=', 'Q'],
             ['quote_number', '=', $quote['quote_number']]
         ])->get();
+        
         if(!empty($exist->toArray()))
         {
-            return response()->json(['status' => 400, 'error' => 'This quote is already saved']);
+            return response()->json(['status' => 400, 'error' => 'This quote number already exists']);
         }
 
         //save in pivot table
@@ -105,11 +112,12 @@ class QuoteController extends Controller
         $jobs = [];
         foreach ($quote['job_id'] as $index => $jobid) {
             $jobs[$jobid] = [
+                'jobtype'   => $quote['jobtype'][$index],
                 'quantity'  => $quote['quantity'][$index],
                 'rate'      => $quote['price'][$index],
             ];
         }
-        //dd($jobs);
+        // dump($jobs);
         $saved_quote = Quote::create($quote);
         
         $saved_quote->jobs()->sync($jobs);

@@ -130,7 +130,7 @@
         <label class="form-label" for="year">{{ __('Year') }} <span class="text-danger">*</span></label>
         <select name="year" id="year" disabled="disabled" class="form-select">
             @php    
-                $last= date('Y')-30;
+                $last= 1980;
                 $now = date('Y');
             @endphp
             @for($i = $now; $i >= $last; $i--)
@@ -167,6 +167,7 @@
                 <thead class="table-light ">
                     <tr>
                         <th style="width:65%;">Job Description</th>
+                        <th style="text-align:center;width:15%;">Job type</th>
                         <th style="text-align:center;width:10%;">Quantity</th>
                         <th style="text-align:center;width:10%;">Unit Price ($)</th>
                         <th style="text-align:center;width:10%;">Amount ($)</th>
@@ -182,6 +183,12 @@
                             <input type="hidden" name="job_id[]" class="job_id input">
                             <!-- <textarea rows="2" name="description[]" class="form-control input mb-2 description" placeholder="{{ __('Job description') }}"></textarea> -->
                             <!-- <div><button type="button" class="btn btn-primary btn-sm adddescription">+</button></div> -->
+                        </td>
+                        <td>
+                            <select name="jobtype[]" id="jobtype" class="form-select">
+                                <option value="R">Repairs</option>
+                                <option value="S">Service</option>
+                            </select>
                         </td>
                         <td>
                             <input style="width:90px;" type="text" min="1" value="1.00" name="quantity[]" class="quantity form-control input">
