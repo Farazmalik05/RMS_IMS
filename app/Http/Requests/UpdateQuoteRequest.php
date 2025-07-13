@@ -38,6 +38,7 @@ class UpdateQuoteRequest extends FormRequest
             'nextservicedate'   => ['bail'],
             'job.*'             => ['bail', 'required'],
             'job_id.*'          => ['bail'],
+            'jobtype.*'         => ['bail', 'required'],
             'quantity.*'        => ['bail', 'required', 'numeric', 'min:0', 'not_in:0'],
             'total.*'           => ['bail', 'required', 'numeric'],
             'price.*'           => ['bail', 'required', 'numeric'],

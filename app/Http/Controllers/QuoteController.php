@@ -164,17 +164,18 @@ class QuoteController extends Controller
         $quote_details['quote_date'] = Carbon::createFromFormat('d-m-Y', $quote_details['quote_date'])->format('Y-m-d');
         $quote_details['quote_duedate'] = Carbon::createFromFormat('d-m-Y', $quote_details['quote_duedate'])->format('Y-m-d');
         $quote_details['nextservicedate'] = Carbon::createFromFormat('d-m-Y', $quote_details['nextservicedate'])->format('Y-m-d');
-        //dd($quote_details);
+        // dd($quote_details);
 
         $jobs = [];
         foreach ($quote_details['job_id'] as $index => $jobid) {
             $jobs[$jobid] = [
+                'jobtype'   => $quote_details['jobtype'][$index],
                 'quantity'  => $quote_details['quantity'][$index],
                 'rate'      => $quote_details['price'][$index],
             ];
         }
-        //dump($quote_details);
-        //dd($jobs);
+        // dump($quote_details);
+        // dd($jobs);
         
         $quote->update($quote_details);
 

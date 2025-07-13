@@ -131,11 +131,12 @@
             <table id="quote_table" class="table text-nowrap table-bordered">
                 <thead class="table-light ">
                     <tr>
-                        <th scope="col" style="width:65%;">Job Description</th>
-                        <th scope="col" style="text-align:center;">Quantity</th>
-                        <th scope="col" style="text-align:center;">Unit Price ($)</th>
-                        <th scope="col" style="text-align:center;">Amount ($)</th>
-                        <th scope="col" style="text-align:right;">
+                        <th scope="col" style="width:50%;">Job Description</th>
+                        <th scope="col" style="text-align:center;width:15%">Job type</th>
+                        <th scope="col" style="text-align:center;width:10%;">Quantity</th>
+                        <th scope="col" style="text-align:center;width:10%;">Unit Price ($)</th>
+                        <th scope="col" style="text-align:center;width:10%;">Amount ($)</th>
+                        <th scope="col" style="text-align:center;width:5%;">
                             <button type="button" class="btn btn-primary btn-sm addmore">+</button>
                         </th>
                     </tr>
@@ -160,10 +161,16 @@
                             @endif
                         </td>
                         <td>
-                            <input style="width:90px;" type="text" step="1" min="1" name="quantity[]" class="quantity form-control input" value="{{ $job->pivot->quantity }}">
+                            <select name="jobtype[]" id="jobtype" class="form-select">
+                                <option value="R">Repairs</option>
+                                <option value="S">Service</option>
+                            </select>
                         </td>
                         <td>
-                            <input type="text" style="width:100px;" class="form-control mb-2 input price" name="price[]" value="{{ number_format((float)$job->pivot->rate, 2, '.', '') }}">
+                            <input style="width:100%;" type="text" step="1" min="1" name="quantity[]" class="quantity form-control input" value="{{ $job->pivot->quantity }}">
+                        </td>
+                        <td>
+                            <input type="text" style="width:100%;" class="form-control mb-2 input price" name="price[]" value="{{ number_format((float)$job->pivot->rate, 2, '.', '') }}">
                             @php
                                 $total += ($job->pivot->quantity * $job->pivot->rate);
                             @endphp
@@ -171,7 +178,7 @@
                         <td>
                             <input type="text" class="form-control mb-2 input amount" name="total[]" readonly value="{{ number_format((float)$job->pivot->quantity * $job->pivot->rate, 2, '.', '') }}">
                         </td>
-                        <td>
+                        <td style="text-align:center;">
                             <button type="button" class="btn btn-danger btn-sm delete">-</button>
                         </td>
                     </tr>

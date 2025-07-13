@@ -166,12 +166,12 @@
             <table id="quote_table" class="table text-nowrap table-bordered">
                 <thead class="table-light ">
                     <tr>
-                        <th style="width:65%;">Job Description</th>
+                        <th style="width:50%;">Job Description</th>
                         <th style="text-align:center;width:15%;">Job type</th>
                         <th style="text-align:center;width:10%;">Quantity</th>
                         <th style="text-align:center;width:10%;">Unit Price ($)</th>
                         <th style="text-align:center;width:10%;">Amount ($)</th>
-                        <th style="text-align:right;width:5%;">
+                        <th style="text-align:center;width:5%;">
                             <button type="button" class="btn btn-primary btn-sm addmore">+</button>
                         </th>
                     </tr>
@@ -191,18 +191,18 @@
                             </select>
                         </td>
                         <td>
-                            <input style="width:90px;" type="text" min="1" value="1.00" name="quantity[]" class="quantity form-control input">
+                            <input style="width:100%;" type="text" min="1" value="1.00" name="quantity[]" class="quantity form-control input">
                         </td>
                         <td>
-                            <input style="width:100px;" type="text" class="form-control mb-2 input price" name="price[]">
+                            <input style="width:100%;" type="text" class="form-control mb-2 input price" name="price[]">
                         </td>
                         <td>
-                            <input style="width:100px;" type="text" class="form-control mb-2 input amount" name="total[]" readonly>
+                            <input style="width:100%;" type="text" class="form-control mb-2 input amount" name="total[]" readonly>
                         </td>
-                        <td>
+                        <td style="text-align:center;">
                             <button type="button" class="btn btn-danger btn-sm delete">-</button>
                         </td>
-                    </tr>                 
+                    </tr>
                 </tbody>
                 <tfoot>
                     <tr>
