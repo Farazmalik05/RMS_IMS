@@ -24,6 +24,6 @@ class Job extends Model
 
     public function quotes(): BelongsToMany
     {
-        return $this->belongsToMany(Quote::class, 'job_quote')->withTimestamps()->withPivot(['quantity', 'rate']);
+        return $this->belongsToMany(Quote::class, 'job_quote')->withTimestamps()->withPivot(['jobtype', 'quantity', 'rate']);
     }
 }

@@ -40,6 +40,6 @@ class Quote extends Model
 
     public function jobs()
     {
-        return $this->belongsToMany(Job::class, 'job_quote')->withTimestamps()->withPivot(['quantity', 'rate']);
+        return $this->belongsToMany(Job::class, 'job_quote')->withTimestamps()->withPivot(['jobtype', 'quantity', 'rate']);
     }
 }

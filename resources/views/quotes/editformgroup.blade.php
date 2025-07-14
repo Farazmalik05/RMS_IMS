@@ -162,8 +162,8 @@
                         </td>
                         <td>
                             <select name="jobtype[]" id="jobtype" class="form-select">
-                                <option value="R">Repairs</option>
-                                <option value="S">Service</option>
+                                <option value="R" @if($job->pivot->jobtype == 'R' ) selected @endif >Repairs</option>
+                                <option value="S" @if($job->pivot->jobtype == 'S') selected @endif>Service</option>
                             </select>
                         </td>
                         <td>
